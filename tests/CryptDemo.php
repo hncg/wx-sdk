@@ -4,12 +4,12 @@ namespace Tests;
 require_once __DIR__ . '/../vendor/autoload.php';
 use WxSdk\Crypt\WXBizDataCrypt;
 
-class Test
+class CryptDemo
 {
     public function run()
     {
-        $appid = 'wx4f4bc4dec97d474b';
-        $sessionKey = 'tiihtNczf5v6AKRyjwEUhQ==';
+        $appid = '';
+        $sessionKey = '==';
 
         $encryptedData="CiyLU1Aw2KjvrjMdj8YKliAjtP4gsMZM
                 QmRzooG2xrDcvSnxIMXFufNstNGTyaGS
@@ -42,5 +42,5 @@ class Test
     }
 }
 
-$instance = new Test();
+$instance = new CryptDemo();
 $instance->run();
