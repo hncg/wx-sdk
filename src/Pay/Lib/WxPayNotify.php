@@ -1,17 +1,18 @@
 <?php
 /**
- * 
+ *
  * 回调基础类
  * @author widyhu
  *
  */
 namespace WxSdk\Pay\Lib;
+use WxSdk\Pay\Lib\WxPayApi;;
 
 class WxPayNotify extends WxPayNotifyReply
 {
 	private $config = null;
 	/**
-	 * 
+	 *
 	 * 回调入口
 	 * @param bool $needSign  是否需要签名返回
 	 */
@@ -33,9 +34,9 @@ class WxPayNotify extends WxPayNotifyReply
 		}
 		$this->ReplyNotify($needSign);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 回调方法入口，子类可重写该方法
 	 	//TODO 1、进行参数校验
 		//TODO 2、进行签名验证
@@ -64,9 +65,9 @@ class WxPayNotify extends WxPayNotifyReply
 	{
 		return;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * notify回调方法，该方法中需要赋值需要输出的参数,不可重写
 	 * @param array $data
 	 * @return true回调出来完成不需要继续回调，false回调处理未完成需要继续回调
@@ -75,7 +76,7 @@ class WxPayNotify extends WxPayNotifyReply
 	{
 		$msg = "OK";
 		$result = $this->NotifyProcess($data, $this->config, $msg);
-		
+
 		if($result == true){
 			$this->SetReturn_code("SUCCESS");
 			$this->SetReturn_msg("OK");
@@ -85,16 +86,16 @@ class WxPayNotify extends WxPayNotifyReply
 		}
 		return $result;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * 回复通知
 	 * @param bool $needSign 是否需要签名输出
 	 */
 	final private function ReplyNotify($needSign = true)
 	{
 		//如果需要签名
-		if($needSign == true && 
+		if($needSign == true &&
 			$this->GetReturn_code() == "SUCCESS")
 		{
 			$this->SetSign($this->config);
