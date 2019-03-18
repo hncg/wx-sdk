@@ -426,8 +426,7 @@ class WxPayApi
 		//如果返回成功则验证签名
 		try {
 			//获取通知的数据
-			$xml = $GLOBALS['HTTP_RAW_POST_DATA'];
-			$xml = $xml ? $xml : file_get_contents('php://input ');
+			$xml = $GLOBALS['HTTP_RAW_POST_DATA'] ?? file_get_contents('php://input ');
 			$result = WxPayNotifyResults::Init($config, $xml);
 		} catch (WxPayException $e){
 			$msg = $e->errorMessage();
