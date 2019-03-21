@@ -52,7 +52,7 @@ class Login
     public function getAccessToken()
     {
         $client = new Client();
-        $response = $client->request('GET', sprintf(self::ACCESS_TOKEN_URL, $this->appid, $this->secret, $code));
+        $response = $client->request('GET', sprintf(self::ACCESS_TOKEN_URL, $this->appid, $this->secret));
         return $response->getBody()->getContents();
     }
 
